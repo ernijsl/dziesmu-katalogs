@@ -7,7 +7,8 @@ use App\Models\Song;
 class SongController extends Controller
 {
     public function index(){
-        return view('songs.index');
+        $songs = Song::all();
+        return view ('songs.index', ['songs' => $songs]);
     }
 
     public function create(){
