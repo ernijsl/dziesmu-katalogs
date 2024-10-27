@@ -109,13 +109,17 @@
         <a href="{{ route('profile.edit') }}" class=" btn btn-mansprofils fw-bold">MANS PROFILS</a>
         </div>
         <div class="container-fluid justify-content-center">
-        <a href="{{ route('song') }}" class=" btn btn-fav fw-bold">PIEVIENOT DZIESMAS</a>
+        <a href="{{ route('song.create') }}" class=" btn btn-fav fw-bold">PIEVIENOT DZIESMAS</a>
         </div>
         <div class="container-fluid justify-content-center" style="margin-top: 50px">
-        <a href="{{ route('zanri') }}" class=" btn btn-fav fw-bold">PIEVIENOT ŽANRU</a>
+        <a href="{{ route('genre.create') }}" class=" btn btn-fav fw-bold">PIEVIENOT ŽANRU</a>
         </div>
     </div>
-    <div class="h-100 col div-content"></div>
+    <div class="h-100 col div-content">
+      
+  
+       
+    </div>
 </div>
 </body>
 </html>
