@@ -7,11 +7,21 @@ use App\Http\Controllers\GenreController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/zanri', function () {
+    return view('zanri'); 
+})->name('zanri'); 
+
+Route::get('/song', function () {
+    return view('song');
+})->middleware(['auth', 'verified'])->name('song');
+
+
 
 //manis taisitais
 Route::get('/song', [SongController::class, 'index'])->name('song.index');
