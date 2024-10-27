@@ -18,8 +18,16 @@ Route::get('/zanri', function () {
 })->name('zanri'); 
 
 Route::get('/song', function () {
-    return view('song');
-})->middleware(['auth', 'verified'])->name('song');
+    return view('dziesma');
+})->middleware(['auth', 'verified'])->name('dziesma');
+
+Route::get('/login', function () {
+    return view('login'); 
+})->name('login'); 
+
+Route::get('/register', function () {
+    return view('register'); 
+})->name('zanri'); 
 
 
 
