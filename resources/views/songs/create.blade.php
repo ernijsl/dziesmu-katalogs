@@ -20,24 +20,36 @@
         </div>
     @endif
 
-    <form id="create-song-form" method="post" action="{{ route('song.store') }}">
-        @csrf
-        <div>
-            <label>Song Name</label>
-            <input type="text" name="songName" placeholder="name" required />
-        </div>
-        <div>
-            <label>Author</label>
-            <input type="text" name="author" placeholder="author" required />
-        </div>
-        <div>
-            <label>Song Description</label>
-            <input type="text" name="description" placeholder="description" />
-        </div>
-        <div>
-            <input type="submit" value="Save New Song"/>
-        </div>
-    </form>
+<form id="create-song-form" method="post" action="{{ route('song.store') }}">
+    @csrf
+    <div>
+        <label>Song Name</label>
+        <input type="text" name="songName" placeholder="name" required />
+    </div>
+    <div>
+        <label>Author</label>
+        <input type="text" name="author" placeholder="author" required />
+    </div>
+    <div>
+        <label>Song Description</label>
+        <input type="text" name="description" placeholder="description" />
+    </div>
+    <div>
+        <label>Genre</label>
+        <select name="genre_id" required>
+            <option value="">Select a genre</option>
+            @foreach ($genres as $genre)
+                <option value="{{ $genre->id }}" {{ isset($song) && $song->genre_id == $genre->id ? 'selected' : '' }}>
+                    {{ $genre->genreName }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Save New Song"/>
+    </div>
+</form>
+
 
     <script>
         $(document).ready(function() {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\GenreController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,5 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/genre', [GenreController::class, 'index'])->name('genre.index');
+Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
+Route::post('/genre', [GenreController::class, 'store'])->name('genre.store');
+Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])->name('genre.edit');
+Route::put('/genre/{genre}/update', [GenreController::class, 'update'])->name('genre.update');
+Route::delete('/genre/{genre}/destroy', [GenreController::class, 'destroy'])->name('genre.destroy');
+
+Route::resource('genres', GenreController::class);
 
 require __DIR__.'/auth.php';

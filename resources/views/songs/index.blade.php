@@ -25,6 +25,7 @@
                 <th>Song Name</th>
                 <th>Author</th>
                 <th>Description</th>
+                <th>Genre</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -33,6 +34,10 @@
                     <td>{{ $song->songName }}</td>
                     <td>{{ $song->author }}</td>
                     <td>{{ $song->description }}</td>
+                    <td>
+                        {{ isset($song->genre) ? $song->genre->genreName : 'No genre assigned' }}
+                    </td>
+
                     <td><a href="{{ route('song.edit', ['song' => $song]) }}">Edit</a></td>
                     <td>
                         <form class="delete-song-form" method="post" action="{{ route('song.destroy', ['song' => $song]) }}">
@@ -72,6 +77,23 @@
                 }
             });
         });
+
+        function updateGenre(songId, genreId) {
+            $.ajax({
+                url: '/songs/' + songId + '/genre', // Your route to update genre
+                method: 'PUT',
+                data: {
+                    genre_id: genreId,
+                    _token: '{{ csrf_token() }}' // Include CSRF token
+                },
+                success: function(response) {
+                    alert('Genre updated successfully: ' + response.genreName);
+                },
+                error: function(xhr) {
+                    alert('Error updating genre: ' + (xhr.responseJSON.message || 'Unknown error.'));
+                }
+            });
+        }
     </script>
 </body>
 </html>
