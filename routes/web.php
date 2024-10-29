@@ -3,35 +3,18 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SongController;
-use App\Http\Controllers\GenreController;
+use App\Http\Controllers\GenreController;;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
-
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/zanri', function () {
-    return view('zanri'); 
-})->name('zanri'); 
+});
 
 Route::get('/song', function () {
-    return view('dziesma');
-})->middleware(['auth', 'verified'])->name('dziesma');
-
-Route::get('/login', function () {
-    return view('login'); 
-})->name('login'); 
-
-Route::get('/register', function () {
-    return view('register'); 
-})->name('zanri'); 
+    return view('song.index');
+})->middleware(['auth', 'verified'])->name('song.index');
 
 
 
-//manis taisitais
 Route::get('/song', [SongController::class, 'index'])->name('song.index');
 Route::get('/song/create', [SongController::class, 'create'])->name('song.create');
 Route::post('/song', [SongController::class, 'store'])->name('song.store');

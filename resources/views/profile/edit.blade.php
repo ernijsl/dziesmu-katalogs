@@ -32,8 +32,8 @@
 <body>
 <nav class="navbar">
   <div class="container-fluid d-flex justify-content-center align-items-center">
-    @if (Route::has('home'))   
-      <a href="{{ route('home') }}" class="btn btn-outline-danger btn-bac btn-lg">Atpakaļ</a>
+    @if (Route::has('song.index'))   
+      <a href="{{ route('song.index') }}" class="btn btn-outline-danger btn-bac btn-lg">Atpakaļ</a>
     @endif
     <h1 class="mx-auto">Mans Profils</h1>
   </div>
